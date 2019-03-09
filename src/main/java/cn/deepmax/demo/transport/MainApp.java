@@ -22,9 +22,11 @@ public class MainApp {
             if(isInteger(port)){
                 if("-s".equalsIgnoreCase(mode)){
                     NioServer.main(new String[]{port});
+                    return;
                 }
                 if("-sn".equalsIgnoreCase(mode)){
                     NettyServer.main(new String[]{port});
+                    return;
                 }
             }
         }else if(args.length==3){
@@ -34,15 +36,16 @@ public class MainApp {
             if(serverHost!=null && serverHost.length()>0 && isInteger(serverPort)){
                 if("-c".equalsIgnoreCase(mode)){
                     NioClient.main(new String[]{serverHost, serverPort});
+                    return;
                 }
                 if("-cn".equalsIgnoreCase(mode)){
                     NettyClient.main(new String[]{serverHost, serverPort});
+                    return;
                 }
             }
         }
         printInvalid();
     }
-
 
 
 
@@ -68,4 +71,5 @@ public class MainApp {
     private static void append(StringBuilder sb,String msg){
         sb.append(msg).append("\n");
     }
+
 }
